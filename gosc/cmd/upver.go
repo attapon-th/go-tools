@@ -63,7 +63,7 @@ Example:
 func init() {
 	rootCmd.AddCommand(upverCmd)
 
-	upverCmd.PersistentFlags().StringVarP(&regexPatten, "regex", "r", regexPatten, "Set reject search version")
+	upverCmd.PersistentFlags().StringVarP(&regexPatten, "regex", "r", regexPatten, "Set regex search version **fix 2 group**")
 
 	// Here you will define your flags and configuration settings.
 
