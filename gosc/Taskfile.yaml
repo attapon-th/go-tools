@@ -1,0 +1,31 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+  VERSION: 1.0.1
+
+tasks:
+  default:
+    cmds:
+      - task --list-all
+    silent: true
+  dev:
+    cmds:
+      - go run main.go {{.CLI_ARGS}}
+
+  replace:
+    cmds: 
+      - task dev -- replace "world" "test test" < test/text.txt
+  sed:
+    cmds: 
+      - task dev -- sed  "w.+d" "Test testsss" < test/text.txt
+      - echo "Hello World" | task dev -- sed  "W.+d" "Test testsss"
+  upver:
+    cmds: 
+      - echo "Hello World" | task dev -- upver test/vesion.yaml
+  mod:
+    cmds:
+      - go mod tidy
+      - go mod verify
